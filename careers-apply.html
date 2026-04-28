@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>General Application – VayuCred Careers</title>
+  <meta name="description" content="Apply to join VayuCred and help build India's carbon credit infrastructure.">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    .apply-page { min-height:100vh;padding:8rem 1.5rem 5rem; }
+    .apply-inner { max-width:768px;margin:0 auto; }
+    .apply-back { display:inline-flex;align-items:center;gap:0.5rem;opacity:0.4;margin-bottom:3rem;transition:all 0.3s;font-size:0.875rem; }
+    .apply-back:hover { color:var(--emerald-400);opacity:1; }
+    .apply-hero h1 { font-size:3rem;font-weight:300;letter-spacing:-0.025em;margin-bottom:2rem; }
+    @media(min-width:768px) { .apply-hero h1 { font-size:4.5rem; } }
+    .apply-hero p { font-size:1.25rem;opacity:0.6;font-weight:300;line-height:1.7;margin-bottom:4rem; }
+    .form-row { display:grid;grid-template-columns:1fr;gap:2rem;margin-bottom:2rem; }
+    @media(min-width:768px) { .form-row { grid-template-columns:1fr 1fr; } }
+    .field { margin-bottom:0; }
+    .field label { display:block;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;opacity:0.4;font-weight:600;margin-left:1rem;margin-bottom:0.5rem; }
+    .field-header { display:flex;justify-content:space-between;align-items:center;margin-left:1rem;margin-bottom:0.5rem; }
+    .field-header label { margin:0; }
+    .dropzone { border:2px dashed var(--border-color);border-radius:1.5rem;padding:3rem;text-align:center;cursor:pointer;transition:all 0.3s; }
+    .dropzone:hover { border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.05); }
+    .dropzone.has-file { border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.05); }
+    .dropzone-icon { width:4rem;height:4rem;border-radius:9999px;background:var(--card-bg);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem; }
+    .file-display { display:flex;align-items:center;gap:1rem;max-width:20rem;background:var(--bg-primary);padding:1rem;border-radius:1rem;border:1px solid var(--border-color);text-align:left; }
+    .file-icon { width:2.5rem;height:2.5rem;border-radius:0.75rem;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+    .file-name { font-size:0.875rem;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+    .file-size { font-size:0.625rem;opacity:0.4;text-transform:uppercase;letter-spacing:0.1em; }
+    .file-remove { padding:0.5rem;border-radius:0.5rem;transition:background 0.2s; }
+    .file-remove:hover { background:var(--card-bg); }
+    .success-view { min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem; }
+    .success-card { max-width:28rem;width:100%;text-align:center;padding:3rem;border-radius:2.5rem;background:var(--card-bg);border:1px solid var(--border-color); }
+    .success-icon { width:5rem;height:5rem;border-radius:9999px;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 2rem; }
+    .success-card h2 { font-size:1.875rem;font-weight:500;margin-bottom:1rem; }
+    .success-card p { opacity:0.6;font-weight:300;line-height:1.7;margin-bottom:2rem; }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+  <main id="main-content">
+    <div id="form-view" class="apply-page">
+      <div class="apply-inner">
+        <a href="careers.html" class="apply-back">← Back to Careers</a>
+        <div class="apply-hero reveal">
+          <h1>General <span style="color:var(--emerald-400)">Application</span></h1>
+          <p>Tell us about yourself and how you can help VayuCred build a sustainable future.</p>
+        </div>
+        <form id="apply-form">
+          <div class="form-row">
+            <div class="field"><div class="field-header"><label for="app-name">Full Name</label><span id="name-err" class="error-text" style="display:none"></span></div><input id="app-name" type="text" required placeholder="John Doe" class="form-input form-input-sm"></div>
+            <div class="field"><div class="field-header"><label for="app-email">Email Address</label><span id="email-err" class="error-text" style="display:none"></span></div><input id="app-email" type="email" required placeholder="john@example.com" class="form-input form-input-sm"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><div class="field-header"><label for="app-role">Desired Role / Area</label><span id="role-err" class="error-text" style="display:none"></span></div><input id="app-role" type="text" required placeholder="e.g. Engineering, Marketing" class="form-input form-input-sm"></div>
+            <div class="field"><label for="app-linkedin">LinkedIn Profile (Optional)</label><input id="app-linkedin" type="url" placeholder="https://linkedin.com/in/..." class="form-input form-input-sm"></div>
+          </div>
+          <div style="margin-bottom:2rem;">
+            <div class="field-header"><label id="resume-label">Resume / CV</label><span id="resume-err" class="error-text" style="display:none"></span></div>
+            <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-labelledby="resume-label">
+              <input type="file" id="resume-input" class="sr-only" accept=".pdf,.doc,.docx">
+              <div id="dropzone-content"><div class="dropzone-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.4;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></div><p style="font-size:0.875rem;font-weight:500;">Click to upload or drag and drop</p><p style="font-size:0.75rem;opacity:0.4;margin-top:0.25rem;">PDF, DOC, DOCX (Max 10MB)</p></div>
+            </div>
+          </div>
+          <div style="margin-bottom:2rem;"><label for="app-why" style="display:block;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;opacity:0.4;font-weight:600;margin-left:1rem;margin-bottom:0.5rem;">Why VayuCred?</label><textarea id="app-why" required rows="6" placeholder="Tell us about your passion for sustainability..." class="form-textarea" style="border-radius:1.5rem;"></textarea></div>
+          <button type="submit" class="btn btn-primary btn-block" style="padding:1.25rem;font-size:1.125rem;border-radius:9999px;box-shadow:0 8px 32px rgba(16,185,129,0.2);">Submit Application →</button>
+        </form>
+      </div>
+    </div>
+    <div id="success-view" class="success-view" style="display:none;">
+      <div class="success-card">
+        <div class="success-icon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-400)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></div>
+        <h2>Application Received</h2>
+        <p>Thank you for your interest in VayuCred. Our team will review your profile and reach out if there's a potential match.</p>
+        <a href="careers.html" class="btn btn-primary" style="border-radius:9999px;">Back to Careers</a>
+      </div>
+    </div>
+  </main>
+  <div id="footer-placeholder"></div>
+  <div id="scroll-top-placeholder"></div>
+  <script src="js/common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('apply-form');
+      const dropzone = document.getElementById('dropzone');
+      const fileInput = document.getElementById('resume-input');
+      const dropContent = document.getElementById('dropzone-content');
+      let resume = null;
+
+      dropzone.addEventListener('click', () => fileInput.click());
+      dropzone.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();fileInput.click();}});
+      fileInput.addEventListener('change', e => {
+        if(e.target.files&&e.target.files[0]){
+          resume=e.target.files[0];
+          dropzone.classList.add('has-file');
+          dropContent.innerHTML=`<div class="file-display"><div class="file-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-400)" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div><div style="flex:1;min-width:0;"><p class="file-name">${resume.name}</p><p class="file-size">${(resume.size/1024/1024).toFixed(2)} MB</p></div><button type="button" class="file-remove" onclick="event.stopPropagation();this.closest('.dropzone').classList.remove('has-file');document.getElementById('resume-input').value='';document.getElementById('dropzone-content').innerHTML='<div class=dropzone-icon><svg xmlns=http://www.w3.org/2000/svg width=24 height=24 viewBox=\\'0 0 24 24\\' fill=none stroke=currentColor stroke-width=2 style=opacity:0.4;><path d=\\'M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\\'/><polyline points=\\'17 8 12 3 7 8\\'/><line x1=12 x2=12 y1=3 y2=15/></svg></div><p style=font-size:0.875rem;font-weight:500;>Click to upload</p><p style=font-size:0.75rem;opacity:0.4;margin-top:0.25rem;>PDF, DOC, DOCX (Max 10MB)</p>';resume=null;">✕</button></div>`;
+        }
+      });
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        let valid=true;
+        ['name','email','role'].forEach(f=>{
+          const inp=document.getElementById('app-'+f);
+          const err=document.getElementById(f+'-err');
+          if(!inp.value.trim()){err.textContent=f.charAt(0).toUpperCase()+f.slice(1)+' is required';err.style.display='inline';inp.classList.add('form-error');valid=false;}
+          else{err.style.display='none';inp.classList.remove('form-error');}
+        });
+        if(!resume){document.getElementById('resume-err').textContent='Please upload your resume';document.getElementById('resume-err').style.display='inline';valid=false;}
+        if(!valid)return;
+        document.getElementById('form-view').style.display='none';
+        document.getElementById('success-view').style.display='flex';
+      });
+    });
+  </script>
+</body>
+</html>

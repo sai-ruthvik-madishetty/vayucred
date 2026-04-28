@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VayuCred – Turn Clean Energy Into Cash</title>
+  <meta name="description" content="Earn ₹50,000–₹5,00,000/year from your solar or EV assets through verified carbon credits. India's digital MRV platform.">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+<div id="nav-placeholder"></div>
+<main id="main-content">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-video-wrap">
+    <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=1920" class="hero-video"><source src="https://assets.mixkit.co/videos/preview/mixkit-solar-panels-on-a-sun-glare-42010-large.mp4" type="video/mp4"></video>
+    <div class="hero-video-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">Turn Clean <br><span class="text-gradient animate-breathe" style="display:inline-block;padding-bottom:0.5rem;">Energy Into Cash</span></h1>
+    <p class="hero-tagline hero-animate">Unlock the potential of your solar and EV assets.</p>
+    <p class="hero-desc hero-animate">Earn ₹50,000–₹5,00,000/year from your solar or EV assets through verified carbon credits.</p>
+    <div class="hero-animate" style="margin-bottom:2.5rem;"><a href="about.html" class="btn btn-outline btn-sm">Learn More about VayuCred <span style="display:inline-block;transition:transform 0.3s;">→</span></a></div>
+    <div class="hero-checks hero-animate">
+      <div class="hero-check"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-400)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg> No upfront cost</div>
+      <div class="hero-check"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-400)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg> Takes less than 2 minutes to start</div>
+    </div>
+    <p class="hero-cta-label hero-animate">I want to:</p>
+    <div class="hero-cta-group hero-animate">
+      <a href="#calculator" class="btn btn-primary">Check Your Earnings Potential</a>
+      <a href="#buyers" class="btn btn-secondary">Buy carbon credits</a>
+    </div>
+    <p class="hero-note hero-animate">Takes less than 2 minutes • No signup required</p>
+    <div class="hero-badges hero-animate">
+      <span class="badge badge-emerald">India's carbon market is opening soon (CCTS 2026)</span>
+      <span class="badge badge-default">BEE-Approved Methodology</span>
+      <span class="badge badge-default">Verra VCS</span>
+      <span class="badge badge-default">Gold Standard</span>
+      <span class="badge badge-default">CCTS Pre-Registered</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section-border how-section">
+  <div class="blob blob-left"></div>
+  <div class="blob blob-right"></div>
+  <div class="container how-grid">
+    <div class="reveal" style="text-align:center;margin-bottom:4rem;">
+      <span class="section-label">The Ecosystem</span>
+      <h2 class="section-title">How VayuCred Works</h2>
+    </div>
+    <div class="grid-5" style="position:relative;" id="ecosystem-steps"></div>
+  </div>
+</section>
+
+<!-- VALUE PROPOSITION -->
+<section class="section section-border">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:5rem;">
+      <span class="section-label">The Value Proposition</span>
+      <h2 class="section-title" style="margin-bottom:2rem;">Why VayuCred?</h2>
+      <p class="section-subtitle" style="max-width:48rem;margin:0 auto;">We believe that <span style="color:var(--emerald-400);font-weight:500;">decarbonization should be inclusive</span> — and profitable for those enabling it.</p>
+    </div>
+    <div class="grid-2" id="value-cards"></div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator" class="section section-border">
+  <div class="container-md">
+    <div class="reveal" style="text-align:center;margin-bottom:4rem;">
+      <span class="section-label">Earnings Calculator</span>
+      <h2 class="section-title" style="margin-bottom:1.5rem;">See How Much You Can Earn</h2>
+      <p class="section-subtitle">Enter your solar capacity or EV fleet size to estimate your annual carbon credit income</p>
+    </div>
+    <div class="reveal calc-wrap" data-delay="0.2">
+      <div class="calc-grid">
+        <div class="calc-input-group">
+          <div class="calc-field"><label>Solar Capacity (MW)</label><div class="input-wrap"><input type="number" id="solar-capacity" placeholder="e.g. 5"><div class="number-stepper"><button type="button" class="step-btn step-up" data-target="solar-capacity" aria-label="Increase solar capacity"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg></button><button type="button" class="step-btn step-down" data-target="solar-capacity" aria-label="Decrease solar capacity"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button></div></div></div>
+          <div class="calc-field"><label>Number of EVs</label><div class="input-wrap"><input type="number" id="ev-fleet-size" placeholder="e.g. 100"><div class="number-stepper"><button type="button" class="step-btn step-up" data-target="ev-fleet-size" aria-label="Increase EV fleet size"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg></button><button type="button" class="step-btn step-down" data-target="ev-fleet-size" aria-label="Decrease EV fleet size"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button></div></div></div>
+        </div>
+        <div class="calc-result">
+          <p class="calc-result-label">Estimated Yearly Income</p>
+          <div class="calc-result-value" id="calc-result-value">₹0</div>
+          <p class="calc-result-range" id="calc-result-range" style="display:none"></p>
+          <p class="calc-result-note">This is your estimated yearly carbon credit income</p>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <a href="contact.html" class="btn btn-primary btn-block" style="border-radius:9999px;">Start Earning Now</a>
+            <a href="contact.html" class="btn btn-secondary btn-block" style="border-radius:9999px;">Talk to Our Team</a>
+          </div>
+        </div>
+      </div>
+      <div class="calc-features">
+        <div class="calc-feature"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-500)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg><span>No upfront cost</span></div>
+        <div class="calc-feature"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-500)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg><span>No hardware changes required</span></div>
+        <div class="calc-feature"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-500)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg><span>We handle everything</span></div>
+      </div>
+      <p style="margin-top:2rem;text-align:center;font-size:0.625rem;opacity:0.3;font-weight:300;">*Estimates based on typical emission factors and market pricing</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOR ASSET OWNERS -->
+<section id="owners" class="path-header section-border"><div class="container reveal"><span class="path-label">PATH 01</span><h2 class="path-title">FOR ASSET OWNERS</h2><p class="path-desc">Monetize your clean energy generation. Early participants earn the most before supply increases.</p></div></section>
+
+<section class="section"><div class="container two-col">
+  <div class="reveal"><h2 style="font-size:2.25rem;font-weight:300;letter-spacing:-0.025em;margin-bottom:2rem;">You're Leaving Money on the Table</h2><div class="bullet-list" id="owner-bullets"></div><div style="margin-top:3rem;"><a href="contact.html" class="btn btn-primary btn-sm">Check Eligibility</a></div></div>
+  <div class="reveal revenue-card" data-delay="0.2"><h3>Estimated Annual Revenue</h3><div id="revenue-items"></div><p class="revenue-note">*Estimates based on current market rates and average generation factors.</p></div>
+</div></section>
+
+<section class="section"><div class="container"><div class="reveal" style="text-align:center;margin-bottom:6rem;"><span class="section-label">How it Works for Owners</span><h3 class="section-title">Data-driven revenue in 4 steps</h3></div><div class="steps-grid" id="owner-steps"></div><div style="margin-top:4rem;text-align:center;"><a href="contact.html" class="btn btn-primary btn-sm">See Your Earnings</a></div></div></section>
+
+<section class="section section-border"><div class="container two-col">
+  <div class="reveal"><h3 style="font-size:2.25rem;font-weight:300;letter-spacing:-0.025em;margin-bottom:3rem;">Why Owners Choose VayuCred</h3><div id="owner-benefits" style="display:flex;flex-direction:column;gap:2rem;"></div><div style="margin-top:3rem;"><a href="contact.html" class="btn btn-primary btn-sm">Check Your Eligibility</a></div></div>
+  <div class="reveal trust-visual" data-delay="0.2"><div class="gradient-1"></div><div class="gradient-2"></div><div class="trust-card"><p class="label">Owner Trust</p><p>Our credits are based on real energy data, ensuring audit-ready compliance for SEBI and EU reporting.</p></div></div>
+</div></section>
+
+<!-- FOR BUYERS -->
+<section id="buyers" class="path-header section-border"><div class="container reveal"><span class="path-label">PATH 02</span><h2 class="path-title">FOR CORPORATE BUYERS</h2><p class="path-desc">Secure high-integrity carbon supply</p></div></section>
+
+<section class="section"><div class="container two-col">
+  <div class="reveal"><h2 style="font-size:2.25rem;font-weight:300;letter-spacing:-0.025em;margin-bottom:2rem;">India's Most Affordable Verified Supply</h2><div class="bullet-list" id="buyer-bullets"></div><div style="margin-top:3rem;"><a href="contact.html" class="btn btn-primary btn-sm">Request Credit Supply</a></div></div>
+  <div class="reveal revenue-card" data-delay="0.2"><h3>Buyer Advantages</h3><div id="buyer-items"></div></div>
+</div></section>
+
+<section class="section section-border"><div class="container"><div class="reveal" style="text-align:center;margin-bottom:6rem;"><span class="section-label">How it Works for Buyers</span><h3 class="section-title">Seamless procurement in 4 steps</h3></div><div class="steps-grid" id="buyer-steps"></div></div></section>
+
+<!-- VISION -->
+<section class="vision-section"><div style="max-width:72rem;margin:0 auto;padding:0 1.5rem;" class="reveal"><span class="section-label">Our Goal</span><h2 style="font-size:2.25rem;font-weight:300;line-height:1.3;letter-spacing:-0.025em;max-width:64rem;margin-bottom:3rem;">We turn small clean energy assets into a <span style="font-weight:400;font-style:italic;">powerful carbon economy</span></h2><p style="font-size:1.25rem;font-weight:300;opacity:0.7;max-width:56rem;line-height:1.7;">Thousands of solar farms and EV fleets in India generate real emission reductions every day—but most never earn from it. VayuCred brings them together into one system, turning scattered data into verified credits that companies can trust and buy.</p></div></section>
+
+<!-- FINAL CTA -->
+<section class="section" style="padding:8rem 1.5rem;"><div class="container cta-banner reveal"><div class="cta-text"><span class="section-label">ACT NOW</span><h2 style="font-size:2.25rem;font-weight:300;letter-spacing:-0.025em;margin-bottom:1.5rem;">SEBI BRSR Core is mandatory from FY2026. India's carbon market opens mid-2026.</h2><p style="opacity:0.5;font-weight:300;font-size:1.125rem;">Early registrants lock in favourable baseline emission factors and get priority matching with corporate buyers.</p></div><div class="cta-btns"><a href="contact.html" class="btn btn-primary" style="text-align:center;">Start Earning Carbon Credits →</a><a href="contact.html" class="btn btn-secondary" style="text-align:center;">Buy Verified Credits →</a></div></div></section>
+
+
+</main>
+<div id="footer-placeholder"></div>
+<div id="scroll-top-placeholder"></div>
+<script src="js/common.js"></script>
+<script src="js/home.js"></script>
+<script src="js/home-content.js"></script>
+</body>
+</html>
