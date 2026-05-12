@@ -1318,10 +1318,10 @@ function initNavigation() {
 function initMobileMenu() {
   const overlay = document.querySelector('.mobile-overlay');
   const drawer = document.querySelector('.mobile-drawer');
-  const openBtn = document.querySelector('.menu-toggle');
+  const openBtns = document.querySelectorAll('.menu-toggle');
   const closeBtns = document.querySelectorAll('.mobile-close');
 
-  if (!overlay || !drawer || !openBtn) return;
+  if (!overlay || !drawer || openBtns.length === 0) return;
 
   function openMenu() {
     overlay.classList.add('open');
@@ -1335,7 +1335,7 @@ function initMobileMenu() {
     document.body.style.overflow = '';
   }
 
-  openBtn.addEventListener('click', openMenu);
+  openBtns.forEach(btn => btn.addEventListener('click', openMenu));
   overlay.addEventListener('click', closeMenu);
   closeBtns.forEach(btn => btn.addEventListener('click', closeMenu));
 
