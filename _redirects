@@ -1,0 +1,26 @@
+# 301: legacy .html → clean URLs
+/index.html / 301
+/about.html /about 301
+/contact.html /contact 301
+/privacy.html /privacy 301
+/projects.html /projects 301
+/careers.html /careers 301
+/careers-apply.html /careers/apply 301
+/services-solar.html /services/solar 301
+/services-ev.html /services/ev 301
+/services-mrv.html /services/mrv 301
+/services-corporate.html /services/corporate 301
+/project-:slug /projects/:slug 301
+
+# 200: serve files at clean paths (bar stays pretty)
+/about /about.html 200
+/contact /contact.html 200
+/privacy /privacy.html 200
+/careers /careers.html 200
+/careers/apply /careers-apply.html 200
+/services/solar /services-solar.html 200
+/services/ev /services-ev.html 200
+/services/mrv /services-mrv.html 200
+/services/corporate /services-corporate.html 200
+/projects /projects.html 200
+/projects/:slug /project-:slug.html 200

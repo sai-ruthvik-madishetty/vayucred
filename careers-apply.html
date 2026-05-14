@@ -752,7 +752,7 @@
   <main id="main-content">
     <div id="form-view" class="apply-page">
       <div class="apply-inner">
-        <a href="careers.html" class="apply-back">← Back to Careers</a>
+        <a href="/careers" class="apply-back">← Back to Careers</a>
         <div class="apply-hero reveal">
           <h1>General <span style="color:var(--emerald-400)">Application</span></h1>
           <p>Tell us about yourself and how you can help VayuCred build a sustainable future.</p>
@@ -783,7 +783,7 @@
         <div class="success-icon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-400)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></div>
         <h2>Application Received</h2>
         <p>Thank you for your interest in VayuCred. Our team will review your profile and reach out if there's a potential match.</p>
-        <a href="careers.html" class="btn btn-primary" style="border-radius:9999px;">Back to Careers</a>
+        <a href="/careers" class="btn btn-primary" style="border-radius:9999px;">Back to Careers</a>
       </div>
     </div>
   </main>
@@ -839,6 +839,28 @@
     });
   }
 
+  function normalizeNavPath(pathname) {
+    let p = pathname || '/';
+    if (p.length > 1 && p.endsWith('/')) p = p.slice(0, -1);
+    const legacy = {
+      '/index.html': '/',
+      '/about.html': '/about',
+      '/contact.html': '/contact',
+      '/privacy.html': '/privacy',
+      '/projects.html': '/projects',
+      '/careers.html': '/careers',
+      '/careers-apply.html': '/careers/apply',
+      '/services-solar.html': '/services/solar',
+      '/services-ev.html': '/services/ev',
+      '/services-mrv.html': '/services/mrv',
+      '/services-corporate.html': '/services/corporate'
+    };
+    if (legacy[p]) return legacy[p];
+    const m = p.match(/^\/project-([^/]+)\.html$/);
+    if (m) return '/projects/' + m[1];
+    return p;
+  }
+
   // ===== Navigation =====
   function initNavigation() {
     const nav = document.querySelector('.nav');
@@ -855,7 +877,14 @@
     const currentPath = window.location.pathname;
     nav.querySelectorAll('.nav-link').forEach(link => {
       const href = link.getAttribute('href') || link.dataset.href;
-      if (href === currentPath || (currentPath === '/index.html' && href === '/')) {
+      if (!href || href.startsWith('#')) return;
+      let targetPath;
+      try {
+        targetPath = normalizeNavPath(new URL(href, window.location.origin).pathname);
+      } catch (e) {
+        return;
+      }
+      if (normalizeNavPath(currentPath) === targetPath) {
         link.classList.add('active');
       }
     });
@@ -956,32 +985,32 @@
     return `
     <nav class="nav" aria-label="Main navigation">
       <div class="nav-logo">
-        <a href="index.html" aria-label="VayuCred Home" style="display:flex;align-items:center;gap:0.5rem;">
+        <a href="/" aria-label="VayuCred Home" style="display:flex;align-items:center;gap:0.5rem;">
           <div class="nav-logo-icon"><span style="color:#000">${Icons.leaf}</span></div>
           <span>VayuCred</span>
         </a>
       </div>
       <div class="nav-links">
-        <a href="index.html" class="nav-link" data-href="/">Home</a>
-        <a href="about.html" class="nav-link" data-href="/about">About</a>
+        <a href="/" class="nav-link" data-href="/">Home</a>
+        <a href="/about" class="nav-link" data-href="/about">About</a>
         <div class="nav-dropdown">
           <button class="nav-link" aria-haspopup="true" aria-expanded="false">
             Services ${Icons.chevronDown}
           </button>
           <div class="nav-dropdown-menu">
             <div class="nav-dropdown-inner">
-              <a href="services-solar.html" class="nav-dropdown-item">Solar Solutions</a>
-              <a href="services-ev.html" class="nav-dropdown-item">EV Fleet Solutions</a>
-              <a href="services-mrv.html" class="nav-dropdown-item">MRV Technology</a>
-              <a href="services-corporate.html" class="nav-dropdown-item">Credit Solutions</a>
+              <a href="/services/solar" class="nav-dropdown-item">Solar Solutions</a>
+              <a href="/services/ev" class="nav-dropdown-item">EV Fleet Solutions</a>
+              <a href="/services/mrv" class="nav-dropdown-item">MRV Technology</a>
+              <a href="/services/corporate" class="nav-dropdown-item">Credit Solutions</a>
             </div>
           </div>
         </div>
-        <a href="projects.html" class="nav-link" data-href="/projects">Projects</a>
-        <a href="contact.html" class="nav-link" data-href="/contact">Contact</a>
+        <a href="/projects" class="nav-link" data-href="/projects">Projects</a>
+        <a href="/contact" class="nav-link" data-href="/contact">Contact</a>
         <div class="nav-actions">
           <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">${Icons.sun}</button>
-          <a href="contact.html" class="nav-cta">Start Earning</a>
+          <a href="/contact" class="nav-cta">Start Earning</a>
           <button class="menu-toggle" aria-label="Open menu">${Icons.menu}</button>
         </div>
       </div>
@@ -998,7 +1027,7 @@
     <!-- Mobile Drawer -->
     <div class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
       <div class="mobile-drawer-header">
-        <a href="index.html" style="display:flex;align-items:center;gap:0.5rem;" aria-label="VayuCred Home">
+        <a href="/" style="display:flex;align-items:center;gap:0.5rem;" aria-label="VayuCred Home">
           <span style="color:var(--emerald-400)">${Icons.leaf}</span>
           <span style="font-weight:500;letter-spacing:-0.01em;font-size:1.125rem;">VayuCred</span>
         </a>
@@ -1009,26 +1038,26 @@
       </div>
       <div class="mobile-drawer-content">
         <div style="display:flex;flex-direction:column;gap:0.75rem;">
-          <a href="index.html" class="mobile-menu-item">${Icons.home}<span>Home</span></a>
-          <a href="about.html" class="mobile-menu-item">${Icons.globe}<span>About</span></a>
+          <a href="/" class="mobile-menu-item">${Icons.home}<span>Home</span></a>
+          <a href="/about" class="mobile-menu-item">${Icons.globe}<span>About</span></a>
           <button class="mobile-submenu-toggle" aria-expanded="false" aria-haspopup="true">
             <div style="display:flex;align-items:center;gap:0.875rem;">${Icons.zap}<span style="font-weight:500;font-size:0.9375rem;opacity:0.7;">Services</span></div>
             ${Icons.chevronDown}
           </button>
           <div class="mobile-submenu">
             <div class="mobile-submenu-inner">
-              <a href="services-solar.html" class="mobile-submenu-link">Solar Solutions</a>
-              <a href="services-ev.html" class="mobile-submenu-link">EV Fleet Solutions</a>
-              <a href="services-mrv.html" class="mobile-submenu-link">MRV Technology</a>
-              <a href="services-corporate.html" class="mobile-submenu-link">Credit Solutions</a>
+              <a href="/services/solar" class="mobile-submenu-link">Solar Solutions</a>
+              <a href="/services/ev" class="mobile-submenu-link">EV Fleet Solutions</a>
+              <a href="/services/mrv" class="mobile-submenu-link">MRV Technology</a>
+              <a href="/services/corporate" class="mobile-submenu-link">Credit Solutions</a>
             </div>
           </div>
-          <a href="projects.html" class="mobile-menu-item">${Icons.briefcase}<span>Projects</span></a>
-          <a href="contact.html" class="mobile-menu-item">${Icons.mail}<span>Contact</span></a>
+          <a href="/projects" class="mobile-menu-item">${Icons.briefcase}<span>Projects</span></a>
+          <a href="/contact" class="mobile-menu-item">${Icons.mail}<span>Contact</span></a>
         </div>
       </div>
       <div class="mobile-drawer-footer">
-        <a href="contact.html" class="mobile-cta">Start Earning</a>
+        <a href="/contact" class="mobile-cta">Start Earning</a>
       </div>
     </div>`;
   }
@@ -1044,7 +1073,7 @@
     <footer class="footer" role="contentinfo">
       <div class="footer-main">
         <div class="footer-brand">
-          <a href="index.html" class="footer-brand-logo" aria-label="VayuCred Home">
+          <a href="/" class="footer-brand-logo" aria-label="VayuCred Home">
             <div class="footer-brand-icon">${leafSvg}</div>
             <span class="footer-brand-name">VayuCred</span>
           </a>
@@ -1057,25 +1086,25 @@
         <div class="footer-col">
           <h4 class="footer-heading">Platform</h4>
           <nav class="footer-links" aria-label="Platform links">
-            <a href="projects.html" class="footer-link">Projects</a>
-            <a href="index.html#calculator" class="footer-link">Earnings Calculator</a>
-            <a href="services-corporate.html" class="footer-link">Credit Solutions</a>
-            <a href="services-mrv.html" class="footer-link">MRV Technology</a>
+            <a href="/projects" class="footer-link">Projects</a>
+            <a href="/#calculator" class="footer-link">Earnings Calculator</a>
+            <a href="/services/corporate" class="footer-link">Credit Solutions</a>
+            <a href="/services/mrv" class="footer-link">MRV Technology</a>
           </nav>
         </div>
         <div class="footer-col">
           <h4 class="footer-heading">Company</h4>
           <nav class="footer-links" aria-label="Company links">
-            <a href="about.html" class="footer-link">About Us</a>
-            <a href="careers.html" class="footer-link">Careers</a>
-            <a href="privacy.html" class="footer-link">Privacy Policy</a>
-            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="/about" class="footer-link">About Us</a>
+            <a href="/careers" class="footer-link">Careers</a>
+            <a href="/privacy" class="footer-link">Privacy Policy</a>
+            <a href="/contact" class="footer-link">Contact Us</a>
           </nav>
         </div>
         <div class="footer-cta-col">
           <h4 class="footer-cta-title">Get Started</h4>
           <p class="footer-cta-text">Ready to earn from your clean energy assets? Check your eligibility in under 2 minutes.</p>
-          <a href="contact.html" class="footer-cta-btn">Start Earning ${arrowSvg}</a>
+          <a href="/contact" class="footer-cta-btn">Start Earning ${arrowSvg}</a>
         </div>
       </div>
       <div class="footer-bottom-bar">

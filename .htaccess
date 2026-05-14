@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # --- 301: legacy .html URLs → clean paths ---
+  RewriteRule ^index\.html$ / [R=301,L]
+  RewriteRule ^about\.html$ /about [R=301,L]
+  RewriteRule ^contact\.html$ /contact [R=301,L]
+  RewriteRule ^privacy\.html$ /privacy [R=301,L]
+  RewriteRule ^projects\.html$ /projects [R=301,L]
+  RewriteRule ^careers-apply\.html$ /careers/apply [R=301,L]
+  RewriteRule ^careers\.html$ /careers [R=301,L]
+  RewriteRule ^services-solar\.html$ /services/solar [R=301,L]
+  RewriteRule ^services-ev\.html$ /services/ev [R=301,L]
+  RewriteRule ^services-mrv\.html$ /services/mrv [R=301,L]
+  RewriteRule ^services-corporate\.html$ /services/corporate [R=301,L]
+  RewriteRule ^project-([a-zA-Z0-9-]+)\.html$ /projects/$1 [R=301,L]
+
+  # --- Internal rewrite: clean path → file (address bar unchanged) ---
+  RewriteRule ^about/?$ about.html [L]
+  RewriteRule ^contact/?$ contact.html [L]
+  RewriteRule ^privacy/?$ privacy.html [L]
+  RewriteRule ^careers/apply/?$ careers-apply.html [L]
+  RewriteRule ^careers/?$ careers.html [L]
+  RewriteRule ^services/solar/?$ services-solar.html [L]
+  RewriteRule ^services/ev/?$ services-ev.html [L]
+  RewriteRule ^services/mrv/?$ services-mrv.html [L]
+  RewriteRule ^services/corporate/?$ services-corporate.html [L]
+  RewriteRule ^projects/([a-zA-Z0-9-]+)/?$ project-$1.html [L]
+  RewriteRule ^projects/?$ projects.html [L]
+</IfModule>
